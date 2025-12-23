@@ -1,0 +1,132 @@
+
+*{
+    box-sizing: border-box;
+    font-family: "Plus Jakarta Sans", sans-serif ;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.heading{
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+.container{
+    flex: 1;
+}
+
+/*Navbar*/
+
+.navbar{
+    height: 4.5rem;
+    background-color: white;
+}
+.fa-map-location-dot{
+    color: #4fa6e0;
+    font-size: 1.5rem;
+}
+.nav-link{
+    color: #2c2c2c !important;
+}
+
+/*Footer*/
+
+.f-info-links a{
+    text-decoration: none;
+    color: black;
+}
+.f-info-links a:hover{
+    text-decoration: underline;
+}
+.f-info{
+    height: 8rem;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    background-color: #ebebeb;
+}
+.f-info-links,.f-info-socials,.f-info-brand{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    align-items: center;
+}
+.f-info-socials i{
+    font-size: 1.2rem;
+    margin-right: 1rem;
+}
+
+/*Cards*/
+.listing-card{
+    border: none !important;
+    margin-bottom: 2rem ;
+}
+.card-hov{
+    transition: tranform 1s;
+}
+.card-hov:hover{
+    transform: scale(1.03);
+   
+}
+.card-img-top{
+    border-radius: 1rem !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    height: 20rem;
+}
+.card-body{
+    padding: 0px !important;
+}
+.card-text p{
+    font-weight: 400 !important;
+}
+.list-link{
+    text-decoration: none;
+}
+.card-img-overlay{
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.2;
+    background-color: white;
+}
+
+/*New Listing*/
+.add-btn{
+    border: none !important;
+    background-color: #4fa6e0 !important ;
+}
+/*Edit Listing*/
+.edit-btn{
+    border: none !important;
+    background-color: #4fa6e0 !important ;
+}
+/*Show Page*/
+.each-img{
+    height: 30vh;
+}
+
+.btns{
+    display: flex;
+}
+.show-edit-btn{
+    margin-right: 0.4rem;
+    background-color:  #4fa6e0 !important;
+    border: none !important;
+}
+.show-edit-btn:hover{
+    background-color: #76c6fc !important;
+}
+.show-card{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+/* Map */
+#map { 
+    height: 400px;
+    width: 80vh;
+}

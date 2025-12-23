@@ -1,0 +1,49 @@
+<% layout("/layouts/boilerplate.ejs") %>
+<body>
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h2 class="mt-4">Edit Your Listing</h2>
+            <form method="POST" action="/listings/<%= thisUser._id%>?_method=PUT" class="needs-validation" novalidate enctype="multipart/form-data">
+
+                <div class="mb-3 mt-4">
+                    <label for="title" class="form-label">Title</label>
+                    <input value="<%=thisUser.title%>" type="text" name="listing[title]" class="form-control" required>
+                    <div class="valid-feedback">That Looks Great!!</div>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea type="text" name="listing[description]" class="form-control" required><%=thisUser.description%></textarea>
+                    <div class="invalid-feedback">please enter a short description</div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label for="price" class="form-label">Price</label>
+                        <input value="<%=thisUser.price%>"  name="listing[price]" class="form-control" required>
+                        <div class="invalid-feedback">please enter a valid price</div>
+                    </div>
+                    <div class="mb-3 col-md-8">
+                        <label for="location" class="form-label">Location</label>
+                        <input value="<%=thisUser.location%>" type="text" name="listing[location]" class="form-control" required>
+                        <div class="invalid-feedback">please enter a valid location</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <p><b><i>Current Listing Image:-</i></b></p>
+                    <img style="max-width:250px; height:auto;" src="<%= originalUrl%>">
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Upload New Image</label>
+                    <input type="file" name="listing[image]" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="country" class="form-label">Country</label>
+                    <input value="<%=thisUser.country%>" type="text" name="listing[country]" class="form-control" required>
+                    <div class="invalid-feedback">please enter a valid country</div>
+                </div>
+                <br>
+                <button class="btn btn-dark edit-btn">Edit!</button>
+                <br><br>
+            </form>
+        </div>
+    </div>
+</body>
