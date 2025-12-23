@@ -65,9 +65,10 @@ const sessionOptions = {
     }
 };
 
-// app.get("/",(req,res)=>{
-//     res.send("Hey i am root");
-// })
+app.get("/",(req,res)=>{
+    req.flash("success","Welcome to Rentono")
+    res.redirect("/listings");
+})
 
 
 app.use(session(sessionOptions));
