@@ -1,0 +1,80 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<style>
+    .search-heading{
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .listing-card{
+        border: none !important;
+        margin-bottom: 2rem;
+    }
+
+    .card-img-top{
+        border-radius: 1rem !important;
+        width: 100% !important;
+        object-fit: cover !important;
+        height: 20rem;
+    }
+
+    .card-body{
+        padding: 0 !important;
+    }
+
+    .card-text p{
+        font-weight: 400 !important;
+    }
+
+    .list-link{
+        text-decoration: none;
+    }
+
+    .card-hov:hover{
+        opacity: 0.8;
+    }
+</style>
+
+<h3 class="search-heading">
+    Search Results for "<%= search %>"
+</h3>
+
+<% if(searchedListings.length == 0){ %>
+
+    <h4>No Listings Found</h4>
+
+<% } %>
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+
+    <% for(let list of searchedListings){ %>
+
+        <a href="/listings/<%= list._id %>" class="list-link">
+
+            <div class="card card-hov listing-card">
+
+                <img 
+                src="<%= list.image.url %>" 
+                class="card-img-top"
+                alt="listing_image"
+                >
+
+                <div class="card-body">
+
+                    <p class="card-text">
+                        <b><%= list.title %></b>
+                        <br>
+
+                        &#8377;
+                        <%= list.price.toLocaleString("en-IN") %>/night
+                    </p>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    <% } %>
+
+</div>

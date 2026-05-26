@@ -75,3 +75,13 @@ module.exports.destroyListing = async (req,res)=>{
      req.flash("success","Listing is Deleted!!")
      res.redirect("/listings");
 }
+
+module.exports.searchListings = async (req,res)=>{
+    let {search} = req.query;
+
+    let searchedListings = await Listing.find({
+        title : {$regex : search , $options : "i"}
+    });
+
+    res.render("listings/search.ejs",{searchedListings,search});
+}
