@@ -6,13 +6,16 @@ const { isLoggedIn,isOwner,validateListing } = require("../middleware.js");
 const multer = require("multer");
 const {storage} = require("../cloudConfig.js");
 const upload = multer({storage});
-const {index, renderNewForm, showNewForm, createListing, editListing, updateListing, destroyListing,searchListings} = require("../controllers/listings.js");
+const {index, renderNewForm, showNewForm, createListing, editListing, updateListing, destroyListing,searchListings,filterByCategory} = require("../controllers/listings.js");
 
 
 router.get("/",wrapAsync(index));
 
 //search listing
 router.get("/search",wrapAsync(searchListings));
+
+//for the categories
+router.get("/category/:category",wrapAsync(filterByCategory));
 
 //New Listing
 router.get("/new",isLoggedIn,renderNewForm);

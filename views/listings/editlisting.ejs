@@ -28,6 +28,76 @@
                     </div>
                 </div>
                 <div class="mb-3">
+
+                    <label for="category" class="form-label">
+                        Category
+                    </label>
+
+                    <select 
+                    name="listing[category]" 
+                    class="form-select"
+                    required
+                    >
+
+                        <option 
+                        value=""
+                        disabled
+                        <%= !thisUser.category ? 'selected' : '' %>>
+                            Select Category
+                        </option>
+
+                        <option 
+                        value="Rooms"
+                        <%= thisUser.category === 'Rooms' ? 'selected' : '' %>>
+                            Rooms
+                        </option>
+
+                        <option 
+                        value="Iconic Cities"
+                        <%= thisUser.category === 'Iconic Cities' ? 'selected' : '' %>>
+                            Iconic Cities
+                        </option>
+
+                        <option 
+                        value="Mountains"
+                        <%= thisUser.category === 'Mountains' ? 'selected' : '' %>>
+                            Mountains
+                        </option>
+
+                        <option 
+                        value="Castles"
+                        <%= thisUser.category === 'Castles' ? 'selected' : '' %>>
+                            Castles
+                        </option>
+
+                        <option 
+                        value="Pools"
+                        <%= thisUser.category === 'Pools' ? 'selected' : '' %>>
+                            Pools
+                        </option>
+
+                        <option 
+                        value="Camping"
+                        <%= thisUser.category === 'Camping' ? 'selected' : '' %>>
+                            Camping
+                        </option>
+
+                        <option 
+                        value="Farms"
+                        <%= thisUser.category === 'Farms' ? 'selected' : '' %>>
+                            Farms
+                        </option>
+
+                        <option 
+                        value="Arctic"
+                        <%= thisUser.category === 'Arctic' ? 'selected' : '' %>>
+                            Arctic
+                        </option>
+
+                    </select>
+
+                </div>
+                <div class="mb-3">
                     <p><b><i>Current Listing Image:-</i></b></p>
                     <img style="max-width:250px; height:auto;" src="<%= originalUrl%>">
                 </div>
