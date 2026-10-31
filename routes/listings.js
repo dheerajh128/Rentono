@@ -6,13 +6,16 @@ const { isLoggedIn,isOwner,validateListing } = require("../middleware.js");
 const multer = require("multer");
 const {storage} = require("../cloudConfig.js");
 const upload = multer({storage});
-const {index, renderNewForm, showNewForm, createListing, editListing, updateListing, destroyListing,searchListings,filterByCategory} = require("../controllers/listings.js");
+const {index, renderNewForm, showNewForm, createListing, editListing, updateListing, destroyListing,searchListings,aiSearch,filterByCategory} = require("../controllers/listings.js");
 
 
 router.get("/",wrapAsync(index));
 
 //search listing
 router.get("/search",wrapAsync(searchListings));
+
+//smart search. Registered before /:id so "ai-search" is not treated as a listing id.
+router.get("/ai-search",wrapAsync(aiSearch));
 
 //for the categories
 router.get("/category/:category",wrapAsync(filterByCategory));

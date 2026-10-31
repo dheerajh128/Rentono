@@ -1,0 +1,130 @@
+<% layout("layouts/boilerplate.ejs") %>
+
+<style>
+    .search-heading{
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .ai-summary{
+        margin-top: -1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .listing-card{
+        border: none !important;
+        margin-bottom: 2rem;
+    }
+
+    .card-img-top{
+        border-radius: 1rem !important;
+        width: 100% !important;
+        object-fit: cover !important;
+        height: 20rem;
+    }
+
+    .card-body{
+        padding: 0 !important;
+    }
+
+    .card-text p{
+        font-weight: 400 !important;
+    }
+
+    .list-link{
+        text-decoration: none;
+    }
+
+    .card-hov:hover{
+        opacity: 0.8;
+    }
+
+    .ai-meta{
+        color: #4a4a4a;
+    }
+
+    .ai-reason{
+        margin-top: 0.35rem;
+    }
+</style>
+
+<% if(search){ %>
+    <h3 class="search-heading">
+        Smart Search Results for "<%= search %>"
+    </h3>
+<% } else { %>
+    <h3 class="search-heading">Smart Search</h3>
+<% } %>
+
+<% if(notice){ %>
+    <div class="alert alert-warning" role="alert">
+        <%= notice %>
+        <% if(titleSearchHref){ %>
+            <div class="mt-2">
+                <a href="<%= titleSearchHref %>">Search by property title</a>
+            </div>
+        <% } %>
+    </div>
+<% } %>
+
+<% if(summary){ %>
+    <p class="ai-summary"><%= summary %></p>
+<% } %>
+
+<% if(showEmpty){ %>
+    <h4>No Listings Found</h4>
+<% } %>
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+
+    <% for(let card of cards){ %>
+
+        <a href="/listings/<%= card.listing._id %>" class="list-link">
+
+            <div class="card card-hov listing-card">
+
+                <img
+                src="<%= card.listing.image.url %>"
+                class="card-img-top"
+                alt="listing_image"
+                >
+
+                <div class="card-body">
+
+                    <p class="card-text">
+                        <b><%= card.listing.title %></b>
+                        <br>
+
+                        &#8377;
+                        <%= card.listing.price.toLocaleString("en-IN") %>/night
+
+                        <% if(typeof card.listing.location === "string" && card.listing.location.trim()){ %>
+                            <br>
+                            <span class="ai-meta"><%= card.listing.location %></span>
+                        <% } %>
+
+                        <% if(typeof card.listing.category === "string" && card.listing.category.trim()){ %>
+                            <br>
+                            <span class="ai-meta"><%= card.listing.category %></span>
+                        <% } %>
+
+                        <% if(typeof card.score === "number" && Number.isFinite(card.score)){ %>
+                            <br>
+                            <span class="ai-meta"><%= Math.round(card.score * 100) %>% match</span>
+                        <% } %>
+
+                        <% if(card.reason){ %>
+                            <br>
+                            <span class="ai-reason"><%= card.reason %></span>
+                        <% } %>
+                    </p>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    <% } %>
+
+</div>

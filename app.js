@@ -69,12 +69,6 @@ const sessionOptions = {
     }
 };
 
-app.get("/",(req,res)=>{
-    req.flash("success","Welcome to Rentono")
-    res.redirect("/listings");
-})
-
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -89,6 +83,10 @@ app.use((req,res,next)=>{
     next();
 })
 
+app.get("/",(req,res)=>{
+    req.flash("success","Welcome to Rentono")
+    res.redirect("/listings");
+})
 
 app.use("/listings",listingsRoute)
 app.use("/listings/:id/reviews",reviewsRoute)
