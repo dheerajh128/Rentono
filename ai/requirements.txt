@@ -1,0 +1,33 @@
+# Core dependencies for the AI Search Agent
+# Updated to latest stable versions (July 2026)
+
+# LangGraph and LangChain for agent workflow
+langgraph==0.4.8
+langchain-core==0.3.86
+langchain==0.3.18
+
+# Groq LLM integration
+# Note: langchain-groq 0.3.5 requires groq>=0.29.0
+langchain-groq==0.3.5
+groq==0.37.1
+
+# FastMCP for tool server (Phase 2)
+# Using FastMCP 3.x with proper server extras
+fastmcp==3.4.4
+
+# MongoDB async driver
+motor==3.7.0
+pymongo==4.11.0
+
+# Data validation and settings
+pydantic==2.13.4
+pydantic-settings==2.14.2
+
+# Environment configuration
+python-dotenv
+
+# HTTP API (Phase 4). Versions match the environment that was verified
+# with Pydantic 2.13.4. httpx is required by FastAPI's test client.
+fastapi==0.139.0
+uvicorn==0.51.0
+httpx==0.28.1
